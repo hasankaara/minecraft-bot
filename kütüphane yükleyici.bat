@@ -6,7 +6,6 @@ if errorlevel 1 (
     pause
     exit /b 1
 )
-
 echo Node.js bulundu.
 
 :: package.json kontrolü
@@ -15,7 +14,6 @@ if not exist package.json (
     pause
     exit /b 1
 )
-
 echo Paketler yukleniyor...
 npm install
 
@@ -25,9 +23,11 @@ if errorlevel 1 (
     echo PM2 bulunamadi. Suan yukleniyor...
     npm install -g pm2
     if errorlevel 1 (
-        echo PM2 yukleme basarisiz oldu! Lutfen manuel kurun.
+        echo PM2 yukleme basarisiz oldu! Lutfen manuel olarak kurun.
         pause
         exit /b 1
+    ) else (
+        echo PM2 basariyla yuklendi.
     )
 ) else (
     echo PM2 zaten yuklu.
